@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: winsky.utils:java-utils:1.0.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/winsky/utils/java-utils/1.0.1-SNAPSHOT/java-utils-1.0.1-20170619.063155-1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/winsky/utils/java-utils/1.0.1-SNAPSHOT/java-utils-1.0.1-20170619.063155-1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/winsky/utils/java-utils/1.0.1-SNAPSHOT/java-utils-1.0.1-20170619.063155-1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

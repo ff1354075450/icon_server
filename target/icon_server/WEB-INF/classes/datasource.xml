@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datasources xmlns="http://gdk.com/db">
+    <datasource>
+        <name>write</name>
+        <driver-class>com.mysql.cj.jdbc.Driver</driver-class>
+
+        <driver-url>jdbc:mysql://192.168.1.26:3306/icon_server?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;failOverReadOnly=false&amp;serverTimezone=UTC</driver-url>
+        <!--<driver-url>jdbc:mysql://127.0.0.1:3306/icon_server?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;failOverReadOnly=false&amp;serverTimezone=UTC</driver-url>-->
+
+
+        <user>root</user>
+        <password>lua12378900</password>
+        <show-sql>false</show-sql>
+        <max-connection-size>50</max-connection-size>
+        <min-connection-size>20</min-connection-size>
+        <init-connection-size>20</init-connection-size>
+        <acquire-increment-size>5</acquire-increment-size>
+        <available-connection-size>2</available-connection-size>
+        <max-connection-idletime>36000</max-connection-idletime>
+        <max-connection-lifetime>14400</max-connection-lifetime>
+        <idle-connection-test-period>0</idle-connection-test-period>
+        <acquire-retry-attempts>10</acquire-retry-attempts>
+        <acquire-retry-delay>1000</acquire-retry-delay>
+        <connection-timeout>5</connection-timeout>
+        <load-on-startup>false</load-on-startup>
+    </datasource>
+</datasources>
