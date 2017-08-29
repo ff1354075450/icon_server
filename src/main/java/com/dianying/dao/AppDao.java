@@ -3,8 +3,6 @@ package com.dianying.dao;
 import com.dianying.bean.AppBean;
 import com.winsky.page.Page;
 import org.springframework.stereotype.Service;
-
-import javax.security.auth.login.AppConfigurationEntry;
 import java.util.List;
 import java.util.Map;
 
@@ -38,5 +36,10 @@ public class AppDao extends BaseDAO{
 
     public int exist(String appcode,int type){
         return j.queryForInteger("SELECT count(*)  FROM  app_icon WHERE appcode='"+ appcode+"'AND type="+type);
+    }
+
+    public Integer getType(String appcode){
+        String sql = "SELECT type FROM `app_icon` WHERE appcode='"+appcode+"' ORDER BY type DESC LIMIT 1";
+        return j.queryForInteger(sql);
     }
 }

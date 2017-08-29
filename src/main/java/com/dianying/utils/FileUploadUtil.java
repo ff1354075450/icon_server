@@ -16,7 +16,7 @@ import java.util.Random;
  * description: 文件上传
  */
 public class FileUploadUtil {
-    private static final List<String> ALLOW_TYPES = Arrays.asList("image/jpg", "image/jpeg", "image/png", "image/gif", "image/*");
+    private static final List<String> ALLOW_TYPES = Arrays.asList("image/bmp");
 
     /**
      * 图片上传
@@ -68,7 +68,6 @@ public class FileUploadUtil {
 
     /**
      * 校验文件类型是否是被允许的
-     *
      * @param contentType 文件类型
      * @return true：允许上传，false：不允许上传
      */
@@ -80,6 +79,8 @@ public class FileUploadUtil {
      * 保存缩略图。加前缀为s_
      */
     public static void saveSpic(String fileName,String dir){
+        File file = new File(dir+"/"+fileName);
+        System.out.println(file.length());
         SimpleImageUtils.scaleNormal(dir+"/"+fileName, Config.UPLOAD_DIR+"s_"+fileName, 80, 80);
     }
 }

@@ -1,0 +1,25 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+.gitignore
+out/WEB-INF/
+out/artifacts/icon_server_war/
+out/artifacts/icon_server_war_exploded/WEB-INF/
+out/artifacts/icon_server_war_exploded/css/
+out/artifacts/icon_server_war_exploded/image/
+out/artifacts/icon_server_war_exploded/views/
+out/css/
+out/image/
+out/views/
+target/WEB-INF/
+target/classes/com/dianying/CustomException.class
+target/classes/com/dianying/service/FileService.class
+target/generated-sources/
+target/icon_server/WEB-INF/classes/com/dianying/CustomException.class
+target/icon_server/WEB-INF/classes/com/dianying/service/FileService.class

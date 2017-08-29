@@ -1,5 +1,6 @@
 package com.dianying.client.api;
 
+import com.alibaba.fastjson.JSONObject;
 import com.dianying.Config;
 import com.dianying.utils.FileUploadUtil;
 import com.winsky.APIUtil;
@@ -23,49 +24,86 @@ import java.util.Iterator;
 public class FileApi {
     @RequestMapping("/uploadImg")
     public Object uploadImg(@RequestParam(value = "dir",defaultValue = "") String dir ,HttpServletRequest request) {
-        String msg = StringUtils.EMPTY;
+        String errorMsg = StringUtils.EMPTY;
         String imgUrl = StringUtils.EMPTY;
         CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(request.getSession().getServletContext());
         if (multipartResolver.isMultipart(request)) {
             MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
             Iterator<String> iter = multiRequest.getFileNames();
             while (iter.hasNext()) {
-                MultipartFile file = multiRequest.getFile(iter.next());
-                System.out.println(file.getOriginalFilename());
-                if (FileUploadUtil.allowUpload(file.getContentType())) {
-                    imgUrl = FileUploadUtil.upload(file, Config.UPLOAD_DIR+"/"+dir);
-                } else {
-                    msg = "文件类型不合法,只能是 jpg、gif、png、jpeg 类型！";
+                try {
+                    MultipartFile file = multiRequest.getFile(iter.next());
+                    System.out.println(file.getOriginalFilename());
+                    if (FileUploadUtil.allowUpload(file.getContentType())) {
+                        imgUrl = FileUploadUtil.upload(file, Config.UPLOAD_DIR + "/" + dir);
+                    } else {
+                        errorMsg = "文件类型不合法,只能是bmp 类型！";
+                    }
+                } catch (Exception e) {
+                    errorMsg = "文件上传失败";
+                    e.printStackTrace();
                 }
             }
-            if (StringUtils.isEmpty(imgUrl) && StringUtils.isEmpty(msg)) {
-                msg = "文件上传失败";
+            if (StringUtils.isEmpty(imgUrl) && StringUtils.isEmpty(errorMsg)) {
+                errorMsg = "文件上传失败";
             }
         } else {
-            msg = "没有要上传的文件";
+            errorMsg = "没有要上传的文件";
         }
-        if (StringUtils.isEmpty(imgUrl)) {
-            return APIUtil.genSuccessResult();
+        if (StringUtils.isEmpty(errorMsg)) {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("result",1);
+            jsonObject.put("imgUrl",imgUrl);
+            jsonObject.put("dir",dir);
+            return jsonObject;
         } else {
-            return APIUtil.genErrorResult(msg);
+            return APIUtil.genErrorResult(errorMsg);
         }
     }
 
 
     @RequestMapping("/imgList")
     public Object getFileList(String dir){
-        String msg = StringUtils.EMPTY;
+        String errorMsg = StringUtils.EMPTY;
         String[] list = null;
         File dirFile = new File(Config.UPLOAD_DIR+"/"+dir);
         if(dirFile.exists()){
             list = dirFile.list();
         }else {
-            msg = "文件夹不存在";
+            errorMsg = "文件夹不存在";
         }
-        if (StringUtils.isEmpty(msg)) {
-            return APIUtil.genDataResult(list);
+        if (StringUtils.isEmpty(errorMsg)) {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("list",list);
+            jsonObject.put("result",1);
+            jsonObject.put("imgdir",Config.SERVER+Config.RESOURCE_DIR+dir);
+            return jsonObject;
         } else {
-            return APIUtil.genErrorResult(msg);
+            return APIUtil.genErrorResult(errorMsg);
+        }
+    }
+
+    @RequestMapping("/delete")
+    public Object deleteImg(String dir,String name){
+        String errorMsg = StringUtils.EMPTY;
+        File imgFile = new File(Config.UPLOAD_DIR+dir+"/"+name);
+        File sImgFile = new File(Config.UPLOAD_DIR+"s_"+name);
+        try {
+            if (imgFile.exists()){
+                imgFile.delete();
+                sImgFile.delete();
+            }else {
+                errorMsg = "文件不存在";
+            }
+        }catch (Exception e){
+            errorMsg="删除失败";
+            e.printStackTrace();
+        }
+
+        if (StringUtils.isEmpty(errorMsg)) {
+            return APIUtil.genSuccessResult();
+        } else {
+            return APIUtil.genErrorResult(errorMsg);
         }
     }
 

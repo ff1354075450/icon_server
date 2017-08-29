@@ -37,6 +37,9 @@ public class AppBean {
     @Column(name = "log_time")
     private long logTime;
 
+    @Column(name = "description")
+    private String desc;
+
     public Long getId() {
         return id;
     }
@@ -107,6 +110,14 @@ public class AppBean {
 
     public void setLogTime(long logTime) {
         this.logTime = logTime;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
     @Override

@@ -4,8 +4,8 @@
         <name>write</name>
         <driver-class>com.mysql.cj.jdbc.Driver</driver-class>
 
-        <driver-url>jdbc:mysql://192.168.1.26:3306/icon_server?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;failOverReadOnly=false&amp;serverTimezone=UTC</driver-url>
-        <!--<driver-url>jdbc:mysql://127.0.0.1:3306/icon_server?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;failOverReadOnly=false&amp;serverTimezone=UTC</driver-url>-->
+        <!--<driver-url>jdbc:mysql://192.168.1.26:3306/icon_server?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;failOverReadOnly=false&amp;serverTimezone=UTC</driver-url>-->
+        <driver-url>jdbc:mysql://127.0.0.1:3306/icon_server?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;failOverReadOnly=false&amp;serverTimezone=UTC</driver-url>
 
 
         <user>root</user>

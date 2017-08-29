@@ -16,15 +16,15 @@ public class Config {
     public final static String RESOURCE_DIR = "/icon_upload/";
 
     //本机
-    public final static String SERVER = "http://192.168.1.155:8080/";
-    public final static String UPLOAD_DIR = "E:/icon_upload/";
+//    public final static String SERVER = "http://192.168.1.155:8080/";
+//    public final static String UPLOAD_DIR = "E:/icon_upload/";
 
 
     //26配置
 //    public final static String SERVER = "http://192.168.1.26:88/";
 //    public final static String UPLOAD_DIR = "/opt/mynas/icon_upload/";
 
-    //proxy的配置
-//    public final static String SERVER = "http://proxy.dotwintech.com:9000";
-//    public final static String UPLOAD_DIR = "/home/router_upload/";
+    //spreadtech的配置
+    public final static String SERVER = "http://root.dotwintech.com:88/";
+    public final static String UPLOAD_DIR = "/opt/mynas/icon_upload/";
 }
